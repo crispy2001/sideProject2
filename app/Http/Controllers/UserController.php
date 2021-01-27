@@ -47,7 +47,7 @@ class UserController extends Controller
 
 
     public function getProfile(){
-        return view('user.profile');
+        return view('main.index');
     }
     
     

@@ -13,4 +13,14 @@ class EssayController extends Controller
         $essays = Essay::all();
         return view('main.index', ['essays' => $essays]);
     }
+
+    public function postAddEssay(Request $request){
+        $essay = new Essay([
+            'title' => $request->input('title'),
+            'content' => $request->input('content')
+        ]);
+        $essay->save();
+        return redirect()->route('main.index');
+        
+    }
 }

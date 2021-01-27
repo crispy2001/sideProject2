@@ -16,6 +16,13 @@ Route::get('/', [
     'as' => 'main.index'
 ]);
 
+Route::post('/', [
+    'uses' => 'EssayController@postAddEssay',
+    'as' =>  'essay.addEssay'
+]);
+
+
+
 Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'guest'], function(){

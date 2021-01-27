@@ -47,6 +47,41 @@ laveral sideProject
         </div>
     </div>
 </section>
+
+<!-- when the user logged in, they can use it to write date-->
+<section class="page-section" id="Write">
+    <div class="container">
+        @if(Auth::check())
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Write Something</h2>
+        </div>
+        <form action="{{ route('essay.addEssay')}}" method="post">
+            <div class="form-group">
+                <h4 class = "my-3">Title</h4>
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <h4 class = "my-3">Content</h4>
+                <!-- <input type="text" id="content" name="content" class="form-content"> -->
+                <textarea type = "text" name = "content" class = "form-content "></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">OK</button>
+            {{ csrf_field()}}
+        </form>
+        @else
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Signin to write :D</h2>
+        </div>
+        @endif
+
+
+
+    </div>
+</section>
+
+
+
+
 <!-- Portfolio Grid-->
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
@@ -54,7 +89,6 @@ laveral sideProject
             <h2 class="section-heading text-uppercase">Portfolio</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        
 
         <div class="row">
             @foreach($essays->chunk(1) as $essayChunk)

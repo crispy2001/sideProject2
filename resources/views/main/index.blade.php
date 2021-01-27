@@ -57,13 +57,13 @@ laveral sideProject
         </div>
         <form action="{{ route('essay.addEssay')}}" method="post">
             <div class="form-group">
-                <h4 class = "my-3">Title</h4>
+                <h4 class="my-3">Title</h4>
                 <input type="text" id="title" name="title" class="form-control">
             </div>
             <div class="form-group">
-                <h4 class = "my-3">Content</h4>
+                <h4 class="my-3">Content</h4>
                 <!-- <input type="text" id="content" name="content" class="form-content"> -->
-                <textarea type = "text" name = "content" class = "form-content "></textarea>
+                <textarea type="text" name="content" class="form-content "></textarea>
             </div>
             <button type="submit" class="btn btn-primary">OK</button>
             {{ csrf_field()}}
@@ -82,41 +82,54 @@ laveral sideProject
 
 
 
-<!-- Portfolio Grid-->
-<section class="page-section bg-light" id="portfolio">
+<!-- essay Grid-->
+<section class="page-section bg-light" id="essay">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
+            <h2 class="section-heading text-uppercase">essay</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-
+        <!-- 
         <div class="row">
             @foreach($essays->chunk(1) as $essayChunk)
             <div class="col-lg-4 col-sm-6 mb-4">
                 @foreach($essayChunk as $essay)
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="essay-item">
+                    <a class="essay-link" data-toggle="modal" href="#essayModal">
+                        <div class="essay-hover">
+                            <div class="essay-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
                         <img class="img-fluid" src="{{$essay->imgPath}}" alt="" />
                     </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">{{$essay->title}}</div>
-                        <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                    <div class="essay-caption">
+                        <div class="essay-caption-heading">{{$essay->title}}</div>
+                        <div class="essay-caption-subheading text-muted">Illustration</div>
                     </div>
                 </div>
                 @endforeach
             </div>
             @endforeach
         </div>
+         -->
+        <div class="essay-block">
+            @foreach($essays->chunk(1) as $essayChunk)
+            <div class="row essay-row">
+                <div class="essay-item">
+                    @foreach($essayChunk as $essay)
+                    <a type = "button" class="col essay-link " data-toggle="modal" href="">{{$essay->title}}</a>
+                    @endforeach
+                </div>
+            </div>
+            @endforeach
+        </div>
+
     </div>
 </section>
 
 
-<!-- Portfolio Modals-->
+<!-- essay Modals-->
 <!-- Modal 1-->
-<div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="essay-modal modal fade" id="essayModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal"><img src="src/assets/img/close-icon.svg" alt="Close modal" /></div>

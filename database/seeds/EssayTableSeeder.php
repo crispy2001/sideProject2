@@ -15,31 +15,43 @@ class EssayTableSeeder extends Seeder
     {
         $essay = new \App\Essay([
             'title' => 'Treads',
+            'imgPath' => 'src/assets/img/portfolio/01-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
 
         $essay = new \App\Essay([
             'title' => 'Explore',
+            'imgPath' => 'src/assets/img/portfolio/02-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
 
         $essay = new \App\Essay([
             'title' => 'Finish',
+            'imgPath' => 'src/assets/img/portfolio/03-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
 
         $essay = new \App\Essay([
             'title' => 'Lines',
+            'imgPath' => 'src/assets/img/portfolio/04-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
 
         $essay = new \App\Essay([
             'title' => 'Southwest',
+            'imgPath' => 'src/assets/img/portfolio/05-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
 
         $essay = new \App\Essay([
             'title' => 'Window',
+            'imgPath' => 'src/assets/img/portfolio/06-thumbnail.jpg',
+            'content' => 'aqwekfl;qwekjfq;klwnvl;kjkl;jjkj;lkj;oiq'
         ]);
         $essay->save();
     }

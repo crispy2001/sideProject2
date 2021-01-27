@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Essay extends Model
 {
-    protected  $fillable = ['title'];
+    protected  $fillable = ['title', 'imgPath', 'content'];
 }

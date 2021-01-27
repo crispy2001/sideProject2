@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEssaysTable extends Migration
+class CreateUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateEssaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('essays', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('title');
-            $table->string('imgPath');
-            $table->text('content');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateEssaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('essays');
+        Schema::dropIfExists('user');
     }
 }

@@ -13,7 +13,7 @@ laveral sideProject
     </div>
 </header>
 <!-- Services-->
-<section class="page-section" id="services">
+<section class="page-section bg-light" id="services">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Services</h2>
@@ -49,7 +49,7 @@ laveral sideProject
 </section>
 
 <!-- when the user logged in, they can use it to write date-->
-<section class="page-section" id="Write">
+<section class="page-section " id="Write">
     <div class="container">
         @if(Auth::check())
         <div class="text-center">
@@ -65,7 +65,9 @@ laveral sideProject
                 <!-- <input type="text" id="content" name="content" class="form-content"> -->
                 <textarea type="text" name="content" class="form-content "></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">OK</button>
+            <div class = "text-center">
+                <button type="submit" class="btn btn-primary ok-btn">OK</button>
+            </div>
             {{ csrf_field()}}
         </form>
         @else
@@ -83,45 +85,30 @@ laveral sideProject
 
 
 <!-- essay Grid-->
+
+
 <section class="page-section bg-light" id="essay">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">essay</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        <!-- 
-        <div class="row">
-            @foreach($essays->chunk(1) as $essayChunk)
-            <div class="col-lg-4 col-sm-6 mb-4">
-                @foreach($essayChunk as $essay)
-                <div class="essay-item">
-                    <a class="essay-link" data-toggle="modal" href="#essayModal">
-                        <div class="essay-hover">
-                            <div class="essay-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{{$essay->imgPath}}" alt="" />
-                    </a>
-                    <div class="essay-caption">
-                        <div class="essay-caption-heading">{{$essay->title}}</div>
-                        <div class="essay-caption-subheading text-muted">Illustration</div>
-                    </div>
-                </div>
-                @endforeach
+
+
+        @foreach($essays->chunk(2) as $essayChunk)
+        <div class="">
+            @foreach($essayChunk as $essay)
+            <div class="d-flex bd-highlight mb-3 essay-item">
+                <div class="essay-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
+                <!-- <div class="essay-caption col">
+                        <div class="essay-caption-heading ">Threads</div>
+                    </div> -->
+                    <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-plus fa-3x  align-items-end"></i></a>
             </div>
             @endforeach
         </div>
-         -->
-        <div class="essay-block">
-            @foreach($essays->chunk(1) as $essayChunk)
-            <div class="row essay-row">
-                <div class="essay-item">
-                    @foreach($essayChunk as $essay)
-                    <a type = "button" class="col essay-link " data-toggle="modal" href="">{{$essay->title}}</a>
-                    @endforeach
-                </div>
-            </div>
-            @endforeach
-        </div>
+        @endforeach
+
 
     </div>
 </section>
@@ -129,27 +116,23 @@ laveral sideProject
 
 <!-- essay Modals-->
 <!-- Modal 1-->
-<div class="essay-modal modal fade" id="essayModal" tabindex="-1" role="dialog" aria-hidden="true">
+@foreach($essays->chunk(2) as $essayChunk)
+@foreach($essayChunk as $essay)
+<div class="portfolio-modal modal fade" id="{{$essay->title}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal"><img src="src/assets/img/close-icon.svg" alt="Close modal" /></div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5">
+                    <div class="col-lg-8">
                         <div class="modal-body">
                             <!-- Project Details Go Here-->
-                            <h2 class="text-uppercase">Project Name</h2>
-                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-fluid d-block mx-auto" src="{{$essay->imgPath}}" alt="" />
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2020</li>
-                                <li>Client: Threads</li>
-                                <li>Category: Illustration</li>
-                            </ul>
-                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                            <h2 class="text-uppercase">{{$essay->title}}</h2>
+                            <p>{{$essay->content}}</p>
+                            
+                            <button class="btn btn-danger" data-dismiss="modal" type="button">
                                 <i class="fas fa-times mr-1"></i>
-                                Close Project
+                                Delete
                             </button>
                         </div>
                     </div>
@@ -158,7 +141,8 @@ laveral sideProject
         </div>
     </div>
 </div>
-
+@endforeach
+@endforeach
 
 
 

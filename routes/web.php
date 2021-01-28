@@ -16,6 +16,11 @@ Route::get('/', [
     'as' => 'main.index'
 ]);
 
+Route::get('/viewModal/{id}', [
+    'uses' => 'EssayController@getEssayModal',
+    'as' => 'essay.viewEssayModal'
+]);
+
 Route::post('/', [
     'uses' => 'EssayController@postAddEssay',
     'as' =>  'essay.addEssay'

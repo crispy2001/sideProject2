@@ -14,6 +14,12 @@ class EssayController extends Controller
         return view('main.index', ['essays' => $essays]);
     }
 
+    public function getEssayModal(Request $request, $id)
+    {
+        $essayModal = Essay::find($id);
+        return view('main.index', $essayModal);
+    }
+
     public function postAddEssay(Request $request){
         $essay = new Essay([
             'title' => $request->input('title'),

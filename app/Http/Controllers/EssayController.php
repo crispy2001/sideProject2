@@ -35,7 +35,12 @@ class EssayController extends Controller
 
     public function deleteEssay(Request $request, $id){
         $essay = Essay::find($id);
-        $essay->delete();
+        $editor = User::where('email', '=', $essay->editor);
+        if($editor->email = $essay->editor){
+            echo "helloworld";
+            $essay->delete();
+        }
+        
         return redirect()->route('main.index');
         
     }

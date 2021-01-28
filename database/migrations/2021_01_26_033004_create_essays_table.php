@@ -19,6 +19,7 @@ class CreateEssaysTable extends Migration
             $table->string('title');
             $table->string('imgPath');
             $table->text('content');
+            $table->text('editor');
         });
     }
 

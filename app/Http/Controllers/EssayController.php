@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Essay;
+use App\User;
 use App\http\Requests;
+use Auth;
 
 class EssayController extends Controller
 {
@@ -23,9 +25,17 @@ class EssayController extends Controller
     public function postAddEssay(Request $request){
         $essay = new Essay([
             'title' => $request->input('title'),
-            'content' => $request->input('content')
+            'content' => $request->input('content'),
+            'editor' => Auth::user()->email
         ]);
         $essay->save();
+        return redirect()->route('main.index');
+        
+    }
+
+    public function deleteEssay(Request $request, $id){
+        $essay = Essay::find($id);
+        $essay->delete();
         return redirect()->route('main.index');
         
     }

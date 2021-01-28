@@ -14,8 +14,10 @@ class UserController extends Controller
 
     public function postSignup(Request $request){
         $this->validate($request, [
+            'userName' => 'required',
             'email' => 'email|required|unique:users',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4',
+            'isAdmin' => '0'
         ]);
             
         $user = new User([
@@ -36,6 +38,7 @@ class UserController extends Controller
     
     public function postSignin(Request $request){
         $this->validate($request, [
+            'userName' => 'required',
             'email' => 'email|required',
             'password' => 'required|min:4'
         ]);
@@ -45,6 +48,10 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function getUserName(){
+        $user = Auth::user();
+        return view('main.index', $user);
+    }
 
     public function getProfile(){
         return view('main.index');

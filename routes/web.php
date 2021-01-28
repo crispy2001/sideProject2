@@ -21,12 +21,21 @@ Route::get('/viewModal/{id}', [
     'as' => 'essay.viewEssayModal'
 ]);
 
-Route::post('/', [
+// Route::get('/', [
+//     'uses' => 'UserController@getUserName',
+//     'as' => 'user.getUserName'
+// ]);
+
+
+Route::post('/userName', [
     'uses' => 'EssayController@postAddEssay',
     'as' =>  'essay.addEssay'
 ]);
 
-
+Route::get('/essay/{id}', [
+    'uses' => 'EssayController@deleteEssay',
+    'as' => 'essay.delete'
+]);
 
 Route::group(['prefix' => 'user'], function(){
 
@@ -59,6 +68,7 @@ Route::group(['prefix' => 'user'], function(){
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'
         ]);
+        
         
         Route::get('/logout', [
             'uses' => 'UserController@getLogout',

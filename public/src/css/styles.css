@@ -10518,3 +10518,9 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-weight: bold;
   padding: 5px 50px;
 }
+.navbar-hi{
+  text-transform: none;
+}
+.navbar-icon{
+  /* font-size: 32px ; */
+}

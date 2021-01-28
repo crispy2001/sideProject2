@@ -130,10 +130,10 @@ laveral sideProject
                             <h2 class="text-uppercase">{{$essay->title}}</h2>
                             <p>{{$essay->content}}</p>
                             
-                            <button class="btn btn-danger" data-dismiss="modal" type="button">
+                            <a class="btn btn-danger" type="button" href = " {{route('essay.delete',  ['id' => $essay->id])}} ">
                                 <i class="fas fa-times mr-1"></i>
                                 Delete
-                            </button>
+</a>
                         </div>
                     </div>
                 </div>

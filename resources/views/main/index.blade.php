@@ -65,7 +65,7 @@ laveral sideProject
                 <!-- <input type="text" id="content" name="content" class="form-content"> -->
                 <textarea type="text" name="content" class="form-content "></textarea>
             </div>
-            <div class = "text-center">
+            <div class="text-center">
                 <button type="submit" class="btn btn-primary ok-btn">OK</button>
             </div>
             {{ csrf_field()}}
@@ -103,7 +103,7 @@ laveral sideProject
                 <!-- <div class="essay-caption col">
                         <div class="essay-caption-heading ">Threads</div>
                     </div> -->
-                    <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-plus fa-3x  align-items-end"></i></a>
+                <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-plus fa-3x  align-items-end"></i></a>
             </div>
             @endforeach
         </div>
@@ -129,11 +129,15 @@ laveral sideProject
                             <!-- Project Details Go Here-->
                             <h2 class="text-uppercase">{{$essay->title}}</h2>
                             <p>{{$essay->content}}</p>
-                            
-                            <a class="btn btn-danger" type="button" href = " {{route('essay.delete',  ['id' => $essay->id])}} ">
+
+                            @if(Auth::check() )
+                            @if(Auth::user()->email = $essay->editor)
+                            <a class="btn btn-danger" type="button" href=" {{route('essay.delete',  ['id' => $essay->id])}} ">
                                 <i class="fas fa-times mr-1"></i>
                                 Delete
-</a>
+                            </a>
+                            @endif
+                            @endif
                         </div>
                     </div>
                 </div>

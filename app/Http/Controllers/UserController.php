@@ -55,7 +55,7 @@ class UserController extends Controller
     }
 
     public function getProfile(){
-        return view('main.index');
+        return view('user.profile');
     }
     
     

@@ -40,10 +40,15 @@ manage essays
         <div class="">
             @foreach($essayChunk as $essay)
             <div class=" bd-highlight mb-3 essay-item">
-                <div class = "d-flex">
+                <div class="d-flex">
                     <div class="essay-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
-                    <a class="btn btn-primary btn-edit-delete" type="button" >edit</a>
-                    <a class="btn btn-primary btn-edit-delete" type="button" >delete</a>
+                    <form><a type="button" class="btn btn-primary btn-edit-delete" href="{{route('essay.edit', ['id' => $essay->id])}}">edit</a></form>
+                    
+                    <form action="{{route('essay.delete',  ['id' => $essay->id])}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button class="btn btn-primary btn-edit-delete">delete</button>
+                    </form>
                     <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-chevron-down align-items-end dot-dot-dot collapsed " data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$essay->id}}" aria-expanded="false" aria-controls="flush-collapse{{$essay->id}}"></i></a>
                 </div>
                 <div id="flush-collapse{{$essay->id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$essay->id}}" data-bs-parent="#accordionFlushExample">

@@ -23,7 +23,8 @@ class EssayController extends Controller
         return view('main.index', $essayModal);
     }
 
-    public function postAddEssay(Request $request){
+    public function postAddEssay(Request $request)
+    {
         $this->validate($request, [
             'title' => 'required|min:1',
             'content' => 'required|min:1',
@@ -35,24 +36,39 @@ class EssayController extends Controller
         ]);
         $essay->save();
         return redirect()->route('user.essay');
-        
     }
 
-    public function deleteEssay(Request $request, $id){
+    public function deleteEssay(Request $request, $id)
+    {
         $essay = Essay::find($id);
-        $editor = User::where('email', '=', $essay->editor);
-        if($editor->email = $essay->editor){
-            echo "helloworld";
-            $essay->delete();
-        }
-        
-        return redirect()->route('main.index');
+
+        $essay->delete();
+
+        return redirect()->route('user.essay');
     }
 
-    public function getManageEssay(){
+    public function getManageEssay()
+    {
         // $essays = Essay::all();
         $essays = DB::table('essays')->where('editor', '=', Auth::user()->email)->orderBy('id', 'desc')->get();
         return view('essays.manageEssays', ['essays' => $essays]);
     }
 
+    public function getEditEssay($id)
+    {
+        $essay = Essay::find($id);
+        return view('essays.editEssays', ['essay' => $essay]);
+        // $essay = DB::table('essays')->where('id', '=', $id)->get();
+        // return view('essays.editEssays', ['essay' => $essay]);
+    }
+    public function patchEditEssay(Request $request, $id)
+    {
+        $essay = DB::table('essays')->where('id', '=', $id)->get();
+        $essay = DB::table('essays')->where('id', '=', $id)->update([
+            "title" => $request->title,
+            "content" => $request->content
+        ]);
+
+        return redirect()->route('user.essay');
+    }
 }

@@ -101,10 +101,10 @@ laveral sideProject
                             <p>{{$essay->content}}</p>
 
                             @if(Auth::check() )
-                            @if(Auth::user()->email = $essay->editor)
-                            <a class="btn btn-primary" type="button" href=" {{route('essay.delete',  ['id' => $essay->id])}} ">
+                            @if(Auth::user()->email == $essay->editor or Auth::user()->isAdmin == '1')
+                            <a class="btn btn-primary" type="button" href="{{route('essay.edit', ['id' => $essay->id])}}">
                                 <i class="fas fa-times mr-1"></i>
-                                Delete
+                               Edit
                             </a>
                             @endif
                             @endif

@@ -27,14 +27,23 @@ Route::get('/viewModal/{id}', [
 // ]);
 
 
-Route::post('/userName', [
+Route::post('/user/essay/add', [
     'uses' => 'EssayController@postAddEssay',
     'as' =>  'essay.addEssay'
 ]);
 
-Route::get('/essay/{id}', [
+Route::delete('/user/essay/delete/{id}', [
     'uses' => 'EssayController@deleteEssay',
     'as' => 'essay.delete'
+]);
+
+Route::get('/user/essay/edit/{id}', [
+    'uses' => 'EssayController@getEditEssay',
+    'as' => 'essay.edit'
+]);
+Route::patch('/user/essay/edit/{id}', [
+    'uses' => 'EssayController@patchEditEssay',
+    'as' => 'essay.edit'
 ]);
 
 Route::group(['prefix' => 'user'], function(){

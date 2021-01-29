@@ -10526,4 +10526,10 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 .dot-dot-dot{
   font-size: 2rem;
+  padding-top: 0.8rem;
+}
+
+.btn-edit-delete{
+  margin: 0 0.5rem;
+  width: 5rem;
 }

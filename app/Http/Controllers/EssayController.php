@@ -7,6 +7,7 @@ use App\Essay;
 use App\User;
 use App\http\Requests;
 use Auth;
+use DB;
 
 class EssayController extends Controller
 {
@@ -33,7 +34,7 @@ class EssayController extends Controller
             'editor' => Auth::user()->email
         ]);
         $essay->save();
-        return redirect()->route('main.index');
+        return redirect()->route('user.essay');
         
     }
 
@@ -49,7 +50,9 @@ class EssayController extends Controller
     }
 
     public function getManageEssay(){
-        return view('essays.manageEssays');
+        // $essays = Essay::all();
+        $essays = DB::table('essays')->where('editor', '=', Auth::user()->email)->orderBy('id', 'desc')->get();
+        return view('essays.manageEssays', ['essays' => $essays]);
     }
 
 }

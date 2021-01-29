@@ -18,7 +18,7 @@
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li> -->
                 @if(Auth::check())
-                    <li class="nav-item"><a class="nav-link " href="{{ route('user.essay') }}">manage</a></li>
+                    <li class="nav-item"><a class="nav-link " href="{{ route('user.essay') }}">my essay</a></li>
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

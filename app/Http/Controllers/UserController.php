@@ -8,22 +8,22 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function getSignup(){
-        return view('user.signup');
+    public function getSignup($isAdmin){
+        return view('user.signup', ['isAdmin' => $isAdmin]);
     }
 
-    public function postSignup(Request $request){
+    public function postSignup(Request $request, $isAdmin){
         $this->validate($request, [
-            'userName' => 'required',
+            'userName' => 'required|min:1',
             'email' => 'email|required|unique:users',
-            'password' => 'required|min:4',
-            'isAdmin' => '0'
+            'password' => 'required|min:4'
         ]);
             
         $user = new User([
             'userName' => $request->input('userName'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password'))
+            'password' => bcrypt($request->input('password')),
+            'isAdmin' => $isAdmin
         ]);
         $user->save();
         
@@ -47,11 +47,6 @@ class UserController extends Controller
             return redirect()->route('main.index');
         }
         return redirect()->back();
-    }
-
-    public function getUserName(){
-        $user = Auth::user();
-        return view('main.index', $user);
     }
 
     public function getProfile(){

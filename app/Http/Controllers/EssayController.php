@@ -23,6 +23,10 @@ class EssayController extends Controller
     }
 
     public function postAddEssay(Request $request){
+        $this->validate($request, [
+            'title' => 'required|min:1',
+            'content' => 'required|min:1',
+        ]);
         $essay = new Essay([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
@@ -42,6 +46,10 @@ class EssayController extends Controller
         }
         
         return redirect()->route('main.index');
-        
     }
+
+    public function getManageEssay(){
+        return view('essays.manageEssays');
+    }
+
 }

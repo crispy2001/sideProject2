@@ -19,7 +19,7 @@ class CreateUserTable extends Migration
             $table->string('userName');
             $table->string('email')->unique();
             $table->string('password');
-            $table->char('isAdmin');
+            $table->boolean('isAdmin');
         });
     }
 

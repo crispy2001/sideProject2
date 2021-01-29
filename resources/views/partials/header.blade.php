@@ -1,9 +1,10 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
-        <a class="navbar-brand nav-item" href="#">
+        <a class="navbar-brand nav-item" href="{{route('main.index')}}">
             <div class = "row">
-                <div class = "col"><i class="fas fa-star navbar-icon"></i>sideproject</div>
+                <div class = "col"><i class="fas fa-star navbar-icon"></i> </div>
+                @if(Auth::check())<div class="col">{{Auth::user()->userName}}</div>@endif
             </div>
         </a>
         
@@ -16,7 +17,9 @@
             <ul class="navbar-nav text-uppercase ml-auto">
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li> -->
-                <li class="nav-item"><a class="nav-link " href="{{ route('main.index') }}">Home</a></li>
+                @if(Auth::check())
+                    <li class="nav-item"><a class="nav-link " href="{{ route('user.essay') }}">manage</a></li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-friends"></i>
@@ -27,7 +30,8 @@
                         <li><a class="dropdown-item" href="{{ route('user.profile') }}">profile</a></li>
                         <li><a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a></li>
                         @else
-                        <li> <a class="dropdown-item" href="{{ route('user.signup') }}">Signup</a></li>
+                        <li> <a class="dropdown-item" href="{{ route('user.signup', ['isAdmin' => '0']) }}">User Signup</a></li>
+                        <li> <a class="dropdown-item" href="{{ route('user.signup', ['isAdmin' => '1']) }}">Admin Signup</a></li>
                         <li> <a class="dropdown-item" href="{{ route('user.signin') }}">Signin</a></li>
                         @endif
 

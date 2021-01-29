@@ -7,7 +7,8 @@ laveral sideProject
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">Welcome To Our Studio!</div>
+        <div class="masthead-heading text-uppercase">Welcome </div>
+        @if(Auth::check())<div class="masthead-heading text-uppercase">{{Auth::user()->userName}}</div>@endif
         <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
         <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
     </div>
@@ -103,7 +104,7 @@ laveral sideProject
                 <!-- <div class="essay-caption col">
                         <div class="essay-caption-heading ">Threads</div>
                     </div> -->
-                <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-plus fa-3x  align-items-end"></i></a>
+                <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-ellipsis-h align-items-end dot-dot-dot"></i></a>
             </div>
             @endforeach
         </div>
@@ -147,7 +148,6 @@ laveral sideProject
 </div>
 @endforeach
 @endforeach
-
 
 
 @endsection

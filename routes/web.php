@@ -21,11 +21,10 @@ Route::get('/viewModal/{id}', [
     'as' => 'essay.viewEssayModal'
 ]);
 
-// Route::get('/', [
-//     'uses' => 'UserController@getUserName',
-//     'as' => 'user.getUserName'
-// ]);
-
+Route::get('/admin/controllAccount',[
+    'uses' => 'UserController@getaccountController',
+    'as' => 'admin.controllAccount'
+]);
 
 Route::post('/user/essay/add', [
     'uses' => 'EssayController@postAddEssay',
@@ -90,45 +89,3 @@ Route::group(['prefix' => 'user'], function(){
     });
     
 });
-
-
-// Route::group(['prefix' => 'admin'], function(){
-
-//     Route::group(['middleware' => 'guest'], function(){
-//         Route::get('/signup', [
-//             'uses' => 'UserController@getAdminSignup',
-//             'as' => 'admin.signup'
-//         ]);
-        
-//         Route::post('/signup', [
-//             'uses' => 'UserController@postAdminSignup',
-//             'as' => 'admin.signup'
-//         ]);
-        
-        
-//         Route::get('/signin', [
-//             'uses' => 'UserController@getAdminSignin',
-//             'as' => 'admin.signin'
-//         ]);
-        
-//         Route::post('/signin', [
-//             'uses' => 'UserController@postAdminSignin',
-//             'as' => 'admin.signin'
-//         ]);
-//     });
-    
-    
-//     Route::group(['middleware' => 'auth'], function(){
-//         Route::get('/profile', [
-//             'uses' => 'UserController@getProfile',
-//             'as' => 'user.profile'
-//         ]);
-        
-        
-//         Route::get('/logout', [
-//             'uses' => 'UserController@getLogout',
-//             'as' => 'user.logout'
-//         ]);
-//     });
-    
-// });

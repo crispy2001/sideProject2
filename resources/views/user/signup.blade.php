@@ -10,9 +10,9 @@ signup
         <div class="text-center">
             <h2 class="section-heading text-uppercase">
                 @if($isAdmin = '1')
-                    Admin
+                Admin
                 @else
-                    User
+                User
                 @endif
                 Sign Up
             </h2>
@@ -24,13 +24,13 @@ signup
             @endforeach
         </div>
         @endif
-        <form action="{{ route('user.signup',  $isAdmin)}}" method="post">
+        <form action="{{ route('user.signup',  $isAdmin)}}" method="post" >
             <div class="form-group">
                 <h4 class="my-3">
                     @if($isAdmin = '1')
-                        Admin
+                    Admin
                     @else
-                        User
+                    User
                     @endif
                     Name
                 </h4>
@@ -38,7 +38,7 @@ signup
             </div>
             <div class="form-group">
                 <h4 class="my-3">E-Mail</h4>
-                <input type="text" id="email" name="email" class="form-control">
+                <input type="text" id="email" name="email" class="form-control" placeholder="name@example.com">
             </div>
             <div class="form-group">
                 <h4 class="my-3">Password</h4>
@@ -48,5 +48,7 @@ signup
             {{ csrf_field()}}
         </form>
 
+
+        
     </div>
 </section>

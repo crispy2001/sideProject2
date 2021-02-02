@@ -19,6 +19,9 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li> -->
                 @if(Auth::check())
                     <li class="nav-item"><a class="nav-link " href="{{ route('user.essay') }}">my essay</a></li>
+                    @if(Auth::user()->isAdmin == '1')
+                    <li class="nav-item"><a class="nav-link " href="{{ route('admin.controllAccount') }}">user controller</a></li>
+                    @endif
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use DB;
+use SoftDeletes;
 
 class UserController extends Controller
 {
@@ -56,6 +58,14 @@ class UserController extends Controller
     
     public function getLogout(){
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('main.index');
+    }
+
+    public function getaccountController(){
+
+
+        
+        // $users = DB::table('users')->get();
+        // return view('user.controllAccount', ['users' => $users]);
     }
 }

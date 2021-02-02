@@ -15,7 +15,7 @@ controll accounts
         </div>
 
 
-       
+
         @foreach($users->chunk(4) as $userChunk)
         @foreach($userChunk as $user)
         <div class=" bd-highlight mb-3 essay-item row">
@@ -26,8 +26,12 @@ controll accounts
                 </div>
             </div>
             <div class="d-flex justify-content-end row col">
-                <div class="col-5">t1</div>
-                <div class="col-5">t2</div>
+                
+                <form action="{{route('admin.DRAccount',  ['id' => $user->id])}}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-primary btn-edit-delete">delete</button>
+                </form>
             </div>
         </div>
 

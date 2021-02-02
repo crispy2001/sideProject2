@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
 
 Route::get('/', [
     'uses' => 'EssayController@getIndex',
@@ -21,9 +22,13 @@ Route::get('/viewModal/{id}', [
     'as' => 'essay.viewEssayModal'
 ]);
 
-Route::get('/admin/controllAccount',[
-    'uses' => 'UserController@getaccountController',
+Route::get('/admin/controllAccount/',[
+    'uses' => 'UserController@getAccountController',
     'as' => 'admin.controllAccount'
+]);
+Route::delete('/admin/DRAccount/{id}', [
+    'uses' => 'UserController@postDRAccount',
+    'as' => 'admin.DRAccount'
 ]);
 
 Route::post('/user/essay/add', [
@@ -44,6 +49,14 @@ Route::patch('/user/essay/edit/{id}', [
     'uses' => 'EssayController@patchEditEssay',
     'as' => 'essay.edit'
 ]);
+
+Route::get('/test', function(){
+    $post = User::find(1);
+    //$post = DB::table('users')->where('id', '=', 1)->get();
+    //$post->delete();
+    return $post;
+});
+
 
 Route::group(['prefix' => 'user'], function(){
 

@@ -17,7 +17,6 @@ class CreateEssaysTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('title');
-            $table->string('imgPath');
             $table->text('content');
             $table->text('editor');
         });

@@ -36,20 +36,27 @@ manage essays
         </div>
 
 
-        @foreach($essays->chunk(2) as $essayChunk)
-        <div class="">
-            @foreach($essayChunk as $essay)
-            <div class=" bd-highlight mb-3 my-list-item">
-                <div class="d-flex">
-                    <div class="my-list-caption-heading bd-highlight me-auto my-list-title">{{$essay->title}}</div>
-                    <form><a type="button" class="btn btn-primary btn-edit-delete" href="{{route('essay.edit', ['id' => $essay->id])}}">edit</a></form>
-                    
-                    <form action="{{route('essay.delete',  ['id' => $essay->id])}}" method="POST">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <button class="btn btn-primary btn-edit-delete">delete</button>
-                    </form>
-                    <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-chevron-down align-items-end dot-dot-dot collapsed " data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$essay->id}}" aria-expanded="false" aria-controls="flush-collapse{{$essay->id}}"></i></a>
+
+        <div class="bg-light my-scroll" id="my-list-fliter " data-spy="scroll" data-target="#navbar-example" data-offset="0">
+            @foreach($essays as $essay)
+            <div class=" bd-highlight my-list-item">
+                <div class="d-flex ">
+                    <div class=" me-auto row">
+                        <div class="my-list-caption-heading bd-highlight my-list-title">
+                            <div class="my-list-title-dot">{{$essay->title}}</div>
+                        </div>
+                        <div class="my-list-caption-heading bd-highlight my-list-subtitle">{{$essay->created_at}}</div>
+                    </div>
+                    <div class="row">
+                        <form><a type="button" class="btn btn-primary btn-edit-delete" href="{{route('essay.edit', ['id' => $essay->id])}}">edit</a></form>
+
+                        <form action="{{route('essay.delete',  ['id' => $essay->id])}}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button class="btn btn-primary btn-edit-delete">delete</button>
+                        </form>
+                        <a data-toggle="modal" href="#{{$essay->title}}" class="bd-highlight"><i class="fas fa-chevron-down align-items-end dot-dot-dot collapsed " data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$essay->id}}" aria-expanded="false" aria-controls="flush-collapse{{$essay->id}}"></i></a>
+                    </div>
                 </div>
                 <div id="flush-collapse{{$essay->id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$essay->id}}" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">{{$essay->content}}</div>
@@ -58,8 +65,7 @@ manage essays
 
             @endforeach
         </div>
-        @endforeach
-
+    </div>
 
     </div>
 </section>

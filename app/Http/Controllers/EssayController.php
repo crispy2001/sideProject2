@@ -14,7 +14,7 @@ class EssayController extends Controller
     public function getIndex()
     {
         $essays = Essay::all();
-        return view('main.index', ['essays' => $essays]);
+        return view('main.index', ['essays' => $essays, 'cnt' => 0]);
     }
 
     public function getEssayModal(Request $request, $id)

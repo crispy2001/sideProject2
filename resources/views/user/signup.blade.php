@@ -6,10 +6,11 @@ signup
 @section('content')
 
 <section class="page-section">
+    
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">
-                @if($isAdmin = '1')
+                @if($isAdmin == '1')
                 Admin
                 @else
                 User
@@ -27,7 +28,7 @@ signup
         <form action="{{ route('user.signup',  $isAdmin)}}" method="post" >
             <div class="form-group">
                 <h4 class="my-3">
-                    @if($isAdmin = '1')
+                    @if($isAdmin == '1')
                     Admin
                     @else
                     User

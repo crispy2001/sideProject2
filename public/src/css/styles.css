@@ -10574,7 +10574,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   color: #6c757d !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .my-list-subtitle{
     display:none;
   }
@@ -10588,8 +10588,19 @@ section#contact form#contactForm :-ms-input-placeholder {
   flex-grow: 20;  
 }
 .my-welcome-name{
-  width: 80vw;
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+
+.my-scroll{
+  max-height: 500px;
+  overflow: auto; 
+  position: relative;
+}
+
+hr{
+  border-width: 5px;
+  background-color: #fed136;
+}
+

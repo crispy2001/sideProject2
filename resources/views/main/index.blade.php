@@ -65,20 +65,24 @@ laveral sideProject
         </div>
 
 
-        @foreach($essays->chunk(2) as $essayChunk)
-        <div class="">
-            @foreach($essayChunk as $essay)
-            <div class="d-flex bd-highlight mb-3 my-list-item">
-                <div class="my-list-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
-                <!-- <div class="my-list-caption col">
-                        <div class="my-list-caption-heading ">Threads</div>
-                    </div> -->
-                <a data-toggle="modal" href="#modal{{$essay->id}}" class="bd-highlight"><i class="fas fa-ellipsis-h align-items-end dot-dot-dot"></i></a>
+        <div class="bg-white my-scroll" id="my-list-fliter " data-spy="scroll" data-target="#navbar-example" data-offset="0">
+            @foreach($essays as $essay)
+            <div class=" bd-highlight my-list-item">
+                <div class="d-flex ">
+                    <div class=" me-auto row">
+                        <div class="my-list-caption-heading bd-highlight my-list-title">
+                            <div class="my-list-title-dot">{{$essay->title}}</div>
+                        </div>
+                        <div class="my-list-caption-heading bd-highlight my-list-subtitle">{{$essay->created_at}}</div>
+                    </div>
+                    <div class="row">
+                        <a data-toggle="modal" href="#modal{{$essay->id}}" class="bd-highlight"><i class="fas fa-ellipsis-h align-items-end dot-dot-dot"></i></a>
+                    </div>
+                </div>
             </div>
+
             @endforeach
         </div>
-        @endforeach
-
 
     </div>
 </section>
@@ -98,13 +102,16 @@ laveral sideProject
                         <div class="modal-body">
                             <!-- Project Details Go Here-->
                             <h2 class="text-uppercase">{{$essay->title}}</h2>
-                            <p>{{$essay->content}}</p>
+                            <br>
+                            <div class = "d-flex justify-content-end my-list-subtitle">create_at: {{$essay->created_at}}</div>
+                            <div class="my-scroll" data-target="#navbar-example" data-offset="0">
+                                <p>{{$essay->content}}</p>
+                            </div>
 
                             @if(Auth::check() )
                             @if(Auth::user()->email == $essay->editor or Auth::user()->isAdmin == '1')
-                            <a class="btn btn-primary" type="button" href="{{route('essay.edit', ['id' => $essay->id])}}">
-                                <i class="fas fa-times mr-1"></i>
-                               Edit
+                            <a class="btn btn-primary btn-edit-delete" type="button" href="{{route('essay.edit', ['id' => $essay->id])}}">
+                                Edit
                             </a>
                             @endif
                             @endif

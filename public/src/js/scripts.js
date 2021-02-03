@@ -52,8 +52,20 @@
     };
     */
     // Collapse now if page is not at top
-    navbarCollapse();
+    //navbarCollapse();
     // Collapse the navbar when page is scrolled
-    $(window).scroll(navbarCollapse);
+    //$(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
 
+
+
+// jquery fliter(failed)
+// $(document).ready(function(){
+//     $("#my-list-input").on("keyup", function() {
+//       var value = $(this).val().toLowerCase();
+//       $("#my-list-fliter div").filter(function() {
+
+//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+//       });
+//     });
+//   });

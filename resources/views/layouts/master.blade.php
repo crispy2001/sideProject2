@@ -16,7 +16,11 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/components/accordion/">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel = "stylesheet" href = "{{ URL::to('src/css/styles.css')}}">
+    <link rel="stylesheet" href="{{ URL::to('src/css/styles.css')}}">
+
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src = "https://pagination.js.org/dist/2.1.5/pagination.js"></script>
 
     @yield('styles')
 </head>
@@ -30,12 +34,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <!-- Third party plugin JS-->
+
+    <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Contact form JS-->
-    <script src="src/assets/mail/jqBootstrapValidation.js"></script>
-    <script src="src/assets/mail/contact_me.js"></script>
+
+
     <!-- Core theme JS-->
-    <script src="src/js/scripts.js"></script>
+    <script src="{{ URL::to('src/js/scripts.js')}}"></script>
+
+
     @yield('scripts')
 </body>
 

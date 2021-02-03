@@ -11,24 +11,25 @@ controll accounts
         <br>
         <div class="text-center">
             <h2 class="section-heading text-uppercase">accounts</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">in this page, u can delete or restore users accounts</h3>
         </div>
-
-        <div class=" bd-highlight my-list-bar ">
+        <hr>
+        <!-- <div class=" bd-highlight my-list-bar ">
             <div class="d-flex">
                 <div class=" me-auto row">
                     <div class="bd-highlight col my-list-bar-item">test</div>
                 </div>
                 <div class="row">
-                    <div class="bd-highlight col my-list-bar-item">...</div>
+                    <div class="bd-highlight col">
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="bg-white">
+        <div class="bg-white my-scroll" id = "my-list-fliter " data-spy="scroll" data-target="#navbar-example" data-offset="0" >
             @foreach($users as $user)
             <div class=" bd-highlight my-list-item">
-                <div class="d-flex">
+                <div class="d-flex " >
                     <div class=" me-auto row">
                         <div class="my-list-caption-heading bd-highlight my-list-title">
                             <div class="my-list-title-dot">{{$user->userName}}</div>
@@ -62,6 +63,7 @@ controll accounts
 
 
 </section>
+
 
 
 @endsection

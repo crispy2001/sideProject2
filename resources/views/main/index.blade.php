@@ -8,7 +8,7 @@ laveral sideProject
 <header class="masthead">
     <div class="container">
         <div class="masthead-heading text-uppercase">Welcome </div>
-        @if(Auth::check())<div class="masthead-heading text-uppercase">{{Auth::user()->userName}}</div>@endif
+        @if(Auth::check())<div class="masthead-heading text-uppercase my-welcome-name">{{Auth::user()->userName}}</div>@endif
         <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
     </div>
 </header>
@@ -57,7 +57,7 @@ laveral sideProject
 <!-- essay Grid-->
 
 
-<section class="page-section" id="essay">
+<section class="page-section" id="my-list">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">essay</h2>
@@ -68,10 +68,10 @@ laveral sideProject
         @foreach($essays->chunk(2) as $essayChunk)
         <div class="">
             @foreach($essayChunk as $essay)
-            <div class="d-flex bd-highlight mb-3 essay-item">
-                <div class="essay-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
-                <!-- <div class="essay-caption col">
-                        <div class="essay-caption-heading ">Threads</div>
+            <div class="d-flex bd-highlight mb-3 my-list-item">
+                <div class="my-list-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
+                <!-- <div class="my-list-caption col">
+                        <div class="my-list-caption-heading ">Threads</div>
                     </div> -->
                 <a data-toggle="modal" href="#modal{{$essay->id}}" class="bd-highlight"><i class="fas fa-ellipsis-h align-items-end dot-dot-dot"></i></a>
             </div>

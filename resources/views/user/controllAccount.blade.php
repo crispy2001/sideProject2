@@ -6,7 +6,7 @@ controll accounts
 @section('content')
 
 
-<section class="page-section bg-light" id="essay">
+<section class="page-section bg-white" id="my-list">
     <div class="container">
         <br>
         <div class="text-center">
@@ -14,29 +14,50 @@ controll accounts
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
 
-
-
-        @foreach($users->chunk(4) as $userChunk)
-        @foreach($userChunk as $user)
-        <div class=" bd-highlight mb-3 essay-item row">
-            <div class="d-flex justify-content-start row col-11">
-                <div class="col-3 essay-caption-heading bd-highlight my-list-title">{{$user->userName}}</div>
-                <div class="col essay-caption-heading bd-highlight my-list-subtitle">
-                    <div>{{$user->email}}</div>
+        <div class=" bd-highlight my-list-bar ">
+            <div class="d-flex">
+                <div class=" me-auto row">
+                    <div class="bd-highlight col my-list-bar-item">test</div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-end row col">
-                
-                <form action="{{route('admin.DRAccount',  ['id' => $user->id])}}" method="POST">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <button class="btn btn-primary btn-edit-delete">delete</button>
-                </form>
+                <div class="row">
+                    <div class="bd-highlight col my-list-bar-item">...</div>
+                </div>
             </div>
         </div>
 
-        @endforeach
-        @endforeach
+        <div class="bg-white">
+            @foreach($users as $user)
+            <div class=" bd-highlight my-list-item">
+                <div class="d-flex">
+                    <div class=" me-auto row">
+                        <div class="my-list-caption-heading bd-highlight my-list-title">
+                            <div class="my-list-title-dot">{{$user->userName}}</div>
+                        </div>
+                        <div class="my-list-caption-heading bd-highlight my-list-subtitle">{{$user->email}}</div>
+                    </div>
+                    <div class="row">
+                        <form action="{{route('admin.DRAccount',  ['id' => $user->id])}}" method="POST" class=" col">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            @if($user->deleted_at == null)
+                            <button class="btn btn-primary btn-edit-delete">delete</button>
+                            @else
+                            <button class="btn btn-primary btn-edit-delete">restore</button>
+                            @endif
+                        </form>
+                        <a data-toggle="modal" href="#{{$user->id}}" class="bd-highlight col"><i class="fas fa-chevron-down align-items-end dot-dot-dot collapsed btn-edit-delete" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$user->id}}" aria-expanded="false" aria-controls="flush-collapse{{$user->id}}"></i></a>
+                    </div>
+                </div>
+                <div id="flush-collapse{{$user->id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$user->id}}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div>user name: {{$user->userName}}</div>
+                        <div>user email: {{$user->email}}</div>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+        </div>
     </div>
 
 

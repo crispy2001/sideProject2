@@ -39,9 +39,9 @@ manage essays
         @foreach($essays->chunk(2) as $essayChunk)
         <div class="">
             @foreach($essayChunk as $essay)
-            <div class=" bd-highlight mb-3 essay-item">
+            <div class=" bd-highlight mb-3 my-list-item">
                 <div class="d-flex">
-                    <div class="essay-caption-heading bd-highlight me-auto ">{{$essay->title}}</div>
+                    <div class="my-list-caption-heading bd-highlight me-auto my-list-title">{{$essay->title}}</div>
                     <form><a type="button" class="btn btn-primary btn-edit-delete" href="{{route('essay.edit', ['id' => $essay->id])}}">edit</a></form>
                     
                     <form action="{{route('essay.delete',  ['id' => $essay->id])}}" method="POST">

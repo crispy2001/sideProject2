@@ -4,7 +4,7 @@
         <a class="navbar-brand nav-item" href="{{route('main.index')}}">
             <div class = "row">
                 <div class = "col"><i class="fas fa-star navbar-icon"></i> </div>
-                @if(Auth::check())<div class="col">{{Auth::user()->userName}}</div>@endif
+                @if(Auth::check())<div class="col my-header-username">{{Auth::user()->userName}}</div>@endif
             </div>
         </a>
         

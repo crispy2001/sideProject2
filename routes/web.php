@@ -10,95 +10,124 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\User;
+
 
 Route::get('/', [
     'uses' => 'EssayController@getIndex',
     'as' => 'main.index'
 ]);
 
-Route::get('/viewModal/{id}', [
-    'uses' => 'EssayController@getEssayModal',
-    'as' => 'essay.viewEssayModal'
-]);
+// Route::get('/viewModal/{id}', [
+//     'uses' => 'EssayController@getEssayModal',
+//     'as' => 'essay.viewEssayModal'
+// ]);
 
-Route::get('/admin/controllAccount/',[
-    'uses' => 'UserController@getAccountController',
-    'as' => 'admin.controllAccount'
-]);
-Route::delete('/admin/DRAccount/{id}', [
-    'uses' => 'UserController@postDRAccount',
-    'as' => 'admin.DRAccount'
-]);
+// Route::get('/admin/controllAccount/',[
+//     'uses' => 'UserController@getAccountController',
+//     'as' => 'admin.controllAccount'
+// ]);
+// Route::delete('/admin/DRAccount/{id}', [
+//     'uses' => 'UserController@postDRAccount',
+//     'as' => 'admin.DRAccount'
+// ]);
 
-Route::post('/user/essay/add', [
-    'uses' => 'EssayController@postAddEssay',
-    'as' =>  'essay.addEssay'
-]);
+// Route::post('/user/essay/add', [
+//     'uses' => 'EssayController@postAddEssay',
+//     'as' =>  'essay.addEssay'
+// ]);
 
-Route::delete('/user/essay/delete/{id}', [
-    'uses' => 'EssayController@deleteEssay',
-    'as' => 'essay.delete'
-]);
+// Route::delete('/user/essay/delete/{id}', [
+//     'uses' => 'EssayController@deleteEssay',
+//     'as' => 'essay.delete'
+// ]);
 
-Route::get('/user/essay/edit/{id}', [
-    'uses' => 'EssayController@getEditEssay',
-    'as' => 'essay.edit'
-]);
-Route::patch('/user/essay/edit/{id}', [
-    'uses' => 'EssayController@patchEditEssay',
-    'as' => 'essay.edit'
-]);
-
-Route::get('/test', function(){
-    $post = User::find(1);
-    //$post = DB::table('users')->where('id', '=', 1)->get();
-    //$post->delete();
-    return $post;
-});
+// Route::get('/user/essay/edit/{id}', [
+//     'uses' => 'EssayController@getEditEssay',
+//     'as' => 'essay.edit'
+// ]);
+// Route::patch('/user/essay/edit/{id}', [
+//     'uses' => 'EssayController@patchEditEssay',
+//     'as' => 'essay.edit'
+// ]);
 
 
-Route::group(['prefix' => 'user'], function(){
 
-    Route::group(['middleware' => 'guest'], function(){
+Route::group(['prefix' => 'user'], function () {
+
+    Route::group(['middleware' => 'guest'], function () {
         Route::get('/signup/{isAdmin}', [
             'uses' => 'UserController@getSignup',
             'as' => 'user.signup'
         ]);
-        
+
         Route::post('/signup/{isAdmin}', [
             'uses' => 'UserController@postSignup',
             'as' => 'user.signup'
         ]);
-        
-        
+
+
         Route::get('/signin', [
             'uses' => 'UserController@getSignin',
             'as' => 'user.signin'
         ]);
-        
+
         Route::post('/signin', [
             'uses' => 'UserController@postSignin',
             'as' => 'user.signin'
         ]);
-        
     });
     Route::get('/essay', [
         'uses' => 'EssayController@getManageEssay',
         'as' => 'user.essay'
     ]);
-    
-    Route::group(['middleware' => 'auth'], function(){
+
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [
             'uses' => 'UserController@getProfile',
             'as' => 'user.profile'
         ]);
-        
-        
+
+
         Route::get('/logout', [
             'uses' => 'UserController@getLogout',
             'as' => 'user.logout'
         ]);
     });
-    
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/viewModal/{id}', [
+        'uses' => 'EssayController@getEssayModal',
+        'as' => 'essay.viewEssayModal'
+    ]);
+
+    Route::get('/admin/controllAccount/', [
+        'uses' => 'UserController@getAccountController',
+        'as' => 'admin.controllAccount'
+    ]);
+    Route::delete('/admin/DRAccount/{id}', [
+        'uses' => 'UserController@postDRAccount',
+        'as' => 'admin.DRAccount'
+    ]);
+
+    Route::post('/user/essay/add', [
+        'uses' => 'EssayController@postAddEssay',
+        'as' =>  'essay.addEssay'
+    ]);
+
+    Route::delete('/user/essay/delete/{id}', [
+        'uses' => 'EssayController@deleteEssay',
+        'as' => 'essay.delete'
+    ]);
+
+    Route::get('/user/essay/edit/{id}', [
+        'uses' => 'EssayController@getEditEssay',
+        'as' => 'essay.edit'
+    ]);
+    Route::patch('/user/essay/edit/{id}', [
+        'uses' => 'EssayController@patchEditEssay',
+        'as' => 'essay.edit'
+    ]);
 });

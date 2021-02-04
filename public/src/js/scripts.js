@@ -3,14 +3,14 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
     */
-   (function ($) {
+(function ($) {
     "use strict"; // Start of use strict
 
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (
             location.pathname.replace(/^\//, "") ==
-                this.pathname.replace(/^\//, "") &&
+            this.pathname.replace(/^\//, "") &&
             location.hostname == this.hostname
         ) {
             var target = $(this.hash);
@@ -69,3 +69,11 @@
 //       });
 //     });
 //   });
+
+$(document).ready(function () {
+    $(".my-essays-btn").click(function () {
+        $("#my-essays").toggleClass("my-essays-hide");
+         $("#others-essays").toggleClass("my-essays-show");
+        //$("#others-essays").remove(".my-essays-hide");
+    });
+});

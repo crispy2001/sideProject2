@@ -57,7 +57,8 @@ class UserController extends Controller
 
     public function getProfile()
     {
-        return view('user.profile');
+        $user = Auth::user();
+        return view('user.profile', ['user' => $user]);
     }
 
 
@@ -69,7 +70,7 @@ class UserController extends Controller
 
     public function getAccountController()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')->where('email', '!=', Auth::user()->email)->get();
         return view('user.controllAccount', ['users' => $users]);
     }
     public function postDRAccount($id)

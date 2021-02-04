@@ -50,8 +50,13 @@ class EssayController extends Controller
     public function getManageEssay()
     {
         // $essays = Essay::all();
-        $essays = DB::table('essays')->where('editor', '=', Auth::user()->email)->orderBy('id', 'desc')->get();
-        return view('essays.manageEssays', ['essays' => $essays]);
+        // if(Auth::user()->isAdmin == '0')
+        //     $essays = DB::table('essays')->where('editor', '=', Auth::user()->email)->orderBy('id', 'desc')->get();
+        // else
+        //     $essays = Essay::all();
+        $essays = Essay::all();
+        $myEssays = DB::table('essays')->where('editor', '=', Auth::user()->email)->get();
+        return view('essays.manageEssays', ['essays' => $essays, 'myEssays' => $myEssays]);
     }
 
     public function getEditEssay($id)

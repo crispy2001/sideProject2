@@ -61,8 +61,9 @@ laveral sideProject
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">essay</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">in this paragraph, we can see the whole essays.</h3>
         </div>
+        <hr>
 
 
         <div class="bg-white my-scroll" id="my-list-fliter " data-spy="scroll" data-target="#navbar-example" data-offset="0">
